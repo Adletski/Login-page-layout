@@ -45,6 +45,33 @@ class ViewController: UIViewController {
         passwordTextField.layer.cornerRadius = 25
         return passwordTextField
     }()
+    private lazy var loginButton: UIButton = {
+       let loginButton = UIButton()
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.layer.shadowColor = UIColor.black.cgColor
+        loginButton.layer.shadowOpacity = 0.3
+        loginButton.layer.shadowOffset = .zero
+        loginButton.layer.shadowRadius = 10
+        loginButton.layer.shouldRasterize = true
+        loginButton.layer.rasterizationScale = UIScreen.main.scale
+        loginButton.backgroundColor = .purple
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.layer.cornerRadius = 25
+        return loginButton
+    }()
+    private lazy var forgotPasswordButton: UIButton = {
+       let forgotPasswordButton = UIButton()
+        forgotPasswordButton.setTitle("Forgot your password?", for: .normal)
+        forgotPasswordButton.layer.shadowColor = UIColor.black.cgColor
+        forgotPasswordButton.layer.shadowOpacity = 0.3
+        forgotPasswordButton.layer.shadowOffset = .zero
+        forgotPasswordButton.layer.shadowRadius = 10
+        forgotPasswordButton.layer.shouldRasterize = true
+        forgotPasswordButton.layer.rasterizationScale = UIScreen.main.scale
+        forgotPasswordButton.setTitleColor(.white, for: .normal)
+        forgotPasswordButton.titleLabel?.font = .systemFont(ofSize: 10)
+        return forgotPasswordButton
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +84,8 @@ class ViewController: UIViewController {
         view.addSubview(loginLabel)
         view.addSubview(usernameTextField)
         view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
+        view.addSubview(forgotPasswordButton)
     }
     private func setupLayout() {
         
@@ -73,8 +102,18 @@ class ViewController: UIViewController {
         passwordTextField.snp.makeConstraints { passwordTextField in
             passwordTextField.centerX.equalTo(view)
             passwordTextField.height.equalTo(view.frame.height*0.058)
-            passwordTextField.top.equalTo(usernameTextField.snp.bottom).offset(view.frame.height*0.0704)
+            passwordTextField.top.equalTo(usernameTextField.snp.bottom).offset(view.frame.height*0.0352)
             passwordTextField.left.equalTo(view.snp.left).offset(view.frame.width*0.152)
+        }
+        loginButton.snp.makeConstraints { loginButton in
+            loginButton.centerX.equalTo(view)
+            loginButton.height.equalTo(view.frame.height*0.058)
+            loginButton.top.equalTo(passwordTextField.snp.bottom).offset(view.frame.height*0.0704)
+            loginButton.width.equalTo(passwordTextField)
+        }
+        forgotPasswordButton.snp.makeConstraints { forgotPasswordButton in
+            forgotPasswordButton.centerX.equalTo(view)
+            forgotPasswordButton.top.equalTo(loginButton.snp.bottom).offset(view.frame.height*0.006)
         }
     }
 }
