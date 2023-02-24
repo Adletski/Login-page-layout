@@ -27,8 +27,8 @@ class ViewController: UIViewController {
     private lazy var usernameTextField: UITextField = {
        let usernameTextField = UITextField()
         usernameTextField.placeholder = "keanureeves01"
-        usernameTextField.setLeftIcon(image: UIImage(systemName: "person.fill")!)
-        usernameTextField.setRightIcon(image: UIImage(systemName: "checkmark.circle.fill")!)
+        usernameTextField.setLeftIcon(image: UIImage(systemName: "person.fill") ?? UIImage.remove)
+        usernameTextField.setRightIcon(image: UIImage(systemName: "checkmark.circle.fill") ?? UIImage.remove)
         usernameTextField.backgroundColor = .white
         usernameTextField.textColor = .black
         usernameTextField.layer.cornerRadius = view.frame.width*0.063613
