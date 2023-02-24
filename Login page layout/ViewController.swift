@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         usernameTextField.setRightIcon(image: UIImage(systemName: "checkmark.circle.fill")!)
         usernameTextField.backgroundColor = .white
         usernameTextField.textColor = .black
-        usernameTextField.layer.cornerRadius = 25
+        usernameTextField.layer.cornerRadius = view.frame.width*0.063613
         return usernameTextField
     }()
     private lazy var passwordTextField: UITextField = {
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         passwordTextField.setLeftIcon(image: UIImage(systemName: "lock.fill")!)
         passwordTextField.backgroundColor = .white
         passwordTextField.textColor = .black
-        passwordTextField.layer.cornerRadius = 25
+        passwordTextField.layer.cornerRadius = view.frame.width*0.063613
         return passwordTextField
     }()
     private lazy var loginButton: UIButton = {
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         loginButton.layer.rasterizationScale = UIScreen.main.scale
         loginButton.backgroundColor = .purple
         loginButton.setTitleColor(.white, for: .normal)
-        loginButton.layer.cornerRadius = 25
+        loginButton.layer.cornerRadius = view.frame.width*0.063613
         return loginButton
     }()
     private lazy var forgotPasswordButton: UIButton = {
@@ -129,6 +129,26 @@ class ViewController: UIViewController {
         twitterView.image = UIImage(named: "twitter")
         return twitterView
     }()
+    private lazy var noAccount: UILabel = {
+       let noAccount = UILabel()
+        noAccount.text = "Dont have account?"
+        noAccount.textColor = .white
+        noAccount.font = .systemFont(ofSize: 10)
+        return noAccount
+    }()
+    private lazy var signupButton: UIButton = {
+       let signupButton = UIButton()
+        signupButton.setTitle("Sign up", for: .normal)
+        signupButton.layer.shadowColor = UIColor.black.cgColor
+        signupButton.layer.shadowOpacity = 0.3
+        signupButton.layer.shadowOffset = .zero
+        signupButton.layer.shadowRadius = 10
+        signupButton.layer.shouldRasterize = true
+        signupButton.layer.rasterizationScale = UIScreen.main.scale
+        signupButton.titleLabel?.font = .systemFont(ofSize: 10)
+        signupButton.setTitleColor(.blue, for: .normal)
+        return signupButton
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,7 +159,7 @@ class ViewController: UIViewController {
     private func setupHierarchy() {
         let subviews = [viewBackgroundImage,loginLabel,usernameTextField,passwordTextField,loginButton,
                         forgotPasswordButton,view1,connectLabel,view2,facebookButton,facebookView,
-                        twitterButton,twitterView]
+                        twitterButton,twitterView,noAccount,signupButton]
         subviews.forEach { view.addSubview($0) }
     }
     private func setupLayout() {
@@ -211,6 +231,14 @@ class ViewController: UIViewController {
             twitterView.top.equalTo(connectLabel.snp.bottom).offset(view.frame.height*0.025)
             twitterView.width.equalTo(15)
             twitterView.height.equalTo(15)
+        }
+        noAccount.snp.makeConstraints { noAccount in
+            noAccount.centerX.equalTo(view).offset(-view.frame.width/2*0.152)
+            noAccount.top.equalTo(twitterButton.snp.bottom).offset(view.frame.height*0.030516)
+        }
+        signupButton.snp.makeConstraints { signupButton in
+            signupButton.centerX.equalTo(view).offset(view.frame.width/2*0.229)
+            signupButton.top.equalTo(twitterButton.snp.bottom).offset(view.frame.height*0.023474)
         }
     }
 }
