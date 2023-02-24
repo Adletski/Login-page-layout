@@ -72,6 +72,23 @@ class ViewController: UIViewController {
         forgotPasswordButton.titleLabel?.font = .systemFont(ofSize: 10)
         return forgotPasswordButton
     }()
+    private lazy var view1: UIView = {
+       let view1 = UIView()
+        view1.backgroundColor = .gray
+        return view1
+    }()
+    private lazy var connectLabel: UILabel = {
+        let connectLabel = UILabel()
+        connectLabel.text = "or connect with"
+        connectLabel.textColor = .white
+        connectLabel.font = .systemFont(ofSize: 15)
+        return connectLabel
+    }()
+    private lazy var view2: UIView = {
+       let view2 = UIView()
+        view2.backgroundColor = .gray
+        return view2
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +103,9 @@ class ViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
         view.addSubview(forgotPasswordButton)
+        view.addSubview(view1)
+        view.addSubview(connectLabel)
+        view.addSubview(view2)
     }
     private func setupLayout() {
         
@@ -114,6 +134,24 @@ class ViewController: UIViewController {
         forgotPasswordButton.snp.makeConstraints { forgotPasswordButton in
             forgotPasswordButton.centerX.equalTo(view)
             forgotPasswordButton.top.equalTo(loginButton.snp.bottom).offset(view.frame.height*0.006)
+        }
+        view1.snp.makeConstraints { view1 in
+            view1.centerX.equalTo(view).offset(view.frame.width/2*0.509)
+            view1.height.equalTo(1)
+            view1.width.equalTo(view.frame.width*0.178)
+            view1.bottom.equalTo(view).inset(view.frame.height*0.242)
+        }
+        connectLabel.snp.makeConstraints { connectLabel in
+            connectLabel.centerX.equalTo(view)
+            connectLabel.bottom.equalTo(view).inset(view.frame.height*0.235)
+        }
+        view2.snp.makeConstraints { view2 in
+            view2.centerX.equalTo(view).offset(-view.frame.width/2*0.509)
+            view2.height.equalTo(1)
+            view2.width.equalTo(view.frame.width*0.178)
+            view2.bottom.equalTo(view).inset(view.frame.height*0.242)
+            print(view.frame.width)
+            print(view.frame.height)
         }
     }
 }
