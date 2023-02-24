@@ -19,15 +19,14 @@ class ViewController: UIViewController {
     }()
     private lazy var loginLabel: UILabel = {
        let loginLabel = UILabel()
-        loginLabel.text = "Login"
+        loginLabel.text = "STARTIOS"
         loginLabel.textColor = .white
         loginLabel.font = UIFont(name: "Futura", size: CGFloat(30))
         return loginLabel
     }()
     private lazy var usernameTextField: UITextField = {
        let usernameTextField = UITextField()
-        usernameTextField.placeholder = "keanureeves01" + " "
-        usernameTextField.textAlignment = .center
+        usernameTextField.placeholder = "keanureeves01"
         usernameTextField.setLeftIcon(image: UIImage(systemName: "person.fill")!)
         usernameTextField.setRightIcon(image: UIImage(systemName: "checkmark.circle.fill")!)
         usernameTextField.backgroundColor = .white
@@ -38,7 +37,6 @@ class ViewController: UIViewController {
     private lazy var passwordTextField: UITextField = {
        let passwordTextField = UITextField()
         passwordTextField.placeholder = "password"
-        passwordTextField.textAlignment = .center
         passwordTextField.setLeftIcon(image: UIImage(systemName: "lock.fill")!)
         passwordTextField.backgroundColor = .white
         passwordTextField.textColor = .black
@@ -247,7 +245,7 @@ extension UITextField {
     func setLeftIcon(image: UIImage) {
         let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         iconView.image = image
-        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 40, height: 30))
         iconContainerView.addSubview(iconView)
         leftView = iconContainerView
         leftViewMode = .always
@@ -255,7 +253,7 @@ extension UITextField {
     func setRightIcon(image: UIImage) {
         let iconView = UIImageView(frame: CGRect(x: 0, y: 5, width: 20, height: 20))
         iconView.image = image
-        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 40, height: 30))
         iconContainerView.addSubview(iconView)
         rightView = iconContainerView
         rightViewMode = .always
