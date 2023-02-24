@@ -89,6 +89,46 @@ class ViewController: UIViewController {
         view2.backgroundColor = .gray
         return view2
     }()
+    private lazy var facebookButton: UIButton = {
+       let facebookButton = UIButton()
+        facebookButton.setTitle("Facebook", for: .normal)
+        facebookButton.layer.shadowColor = UIColor.black.cgColor
+        facebookButton.layer.shadowOpacity = 0.3
+        facebookButton.layer.shadowOffset = .zero
+        facebookButton.layer.shadowRadius = 10
+        facebookButton.layer.shouldRasterize = true
+        facebookButton.layer.rasterizationScale = UIScreen.main.scale
+        facebookButton.titleLabel?.font = .systemFont(ofSize: 10)
+        facebookButton.backgroundColor = .blue
+        facebookButton.setTitleColor(.white, for: .normal)
+        facebookButton.layer.cornerRadius = 10
+        return facebookButton
+    }()
+    private lazy var twitterButton: UIButton = {
+       let twitterButton = UIButton()
+         twitterButton.setTitle("Twitter", for: .normal)
+         twitterButton.layer.shadowColor = UIColor.black.cgColor
+         twitterButton.layer.shadowOpacity = 0.3
+         twitterButton.layer.shadowOffset = .zero
+         twitterButton.layer.shadowRadius = 10
+         twitterButton.layer.shouldRasterize = true
+         twitterButton.layer.rasterizationScale = UIScreen.main.scale
+         twitterButton.titleLabel?.font = .systemFont(ofSize: 10)
+         twitterButton.backgroundColor = .systemBlue
+         twitterButton.setTitleColor(.white, for: .normal)
+         twitterButton.layer.cornerRadius = 10
+        return twitterButton
+    }()
+    private lazy var facebookView: UIImageView = {
+       let facebookView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        facebookView.image = UIImage(named: "facebook")
+        return facebookView
+    }()
+    private lazy var twitterView: UIImageView = {
+       let twitterView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        twitterView.image = UIImage(named: "twitter")
+        return twitterView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,15 +137,10 @@ class ViewController: UIViewController {
         setupLayout()
     }
     private func setupHierarchy() {
-        view.addSubview(viewBackgroundImage)
-        view.addSubview(loginLabel)
-        view.addSubview(usernameTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(loginButton)
-        view.addSubview(forgotPasswordButton)
-        view.addSubview(view1)
-        view.addSubview(connectLabel)
-        view.addSubview(view2)
+        let subviews = [viewBackgroundImage,loginLabel,usernameTextField,passwordTextField,loginButton,
+                        forgotPasswordButton,view1,connectLabel,view2,facebookButton,facebookView,
+                        twitterButton,twitterView]
+        subviews.forEach { view.addSubview($0) }
     }
     private func setupLayout() {
         
@@ -152,6 +187,30 @@ class ViewController: UIViewController {
             view2.bottom.equalTo(view).inset(view.frame.height*0.242)
             print(view.frame.width)
             print(view.frame.height)
+        }
+        facebookButton.snp.makeConstraints { facebookButton in
+            facebookButton.centerX.equalTo(view).offset(-view.frame.width/2*0.407)
+            facebookButton.width.equalTo(view.frame.width*0.381)
+            facebookButton.height.equalTo(view.frame.height*0.035)
+            facebookButton.top.equalTo(connectLabel.snp.bottom).offset(view.frame.height*0.017)
+        }
+        twitterButton.snp.makeConstraints { twitterButton in
+            twitterButton.centerX.equalTo(view).offset(view.frame.width/2*0.407)
+            twitterButton.width.equalTo(view.frame.width*0.381)
+            twitterButton.height.equalTo(view.frame.height*0.035)
+            twitterButton.top.equalTo(connectLabel.snp.bottom).offset(view.frame.height*0.017)
+        }
+        facebookView.snp.makeConstraints { facebookView in
+            facebookView.centerX.equalTo(view).offset(-view.frame.width/2*0.636)
+            facebookView.top.equalTo(connectLabel.snp.bottom).offset(view.frame.height*0.025)
+            facebookView.width.equalTo(15)
+            facebookView.height.equalTo(15)
+        }
+        twitterView.snp.makeConstraints { twitterView in
+            twitterView.centerX.equalTo(view).offset(view.frame.width/2*0.203)
+            twitterView.top.equalTo(connectLabel.snp.bottom).offset(view.frame.height*0.025)
+            twitterView.width.equalTo(15)
+            twitterView.height.equalTo(15)
         }
     }
 }
